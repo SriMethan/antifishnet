@@ -1,9 +1,6 @@
-FROM python:slim
+FROM python:3.10
 
-LABEL maintainer "Manuel Klemenz <manuel.klemenz@gmail.com>"
+COPY . .
+RUN pip install -r requirements.txt
 
-WORKDIR /tmp/fishnet/
-RUN pip install dumb-init && \
-    pip install fairyfishnet
-
-ENTRYPOINT ["dumb-init", "--", "python", "-m", "fairyfishnet", "--no-conf"]
+RUN chmod +x stockfish*
